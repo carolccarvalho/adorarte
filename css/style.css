@@ -25,6 +25,10 @@ time, mark, audio, video {
   box-sizing: border-box;
 }
 
+button {
+  all: unset;
+}
+
 ul {
   list-style: none;
 }
@@ -32,12 +36,12 @@ ul {
 main {
   max-width: 960px;
   margin: 0 auto;
+  padding-top: 120px;
 }
 
 body {
   font-family: 'Roboto';
   color: #434343;
-  /* background-image: url('../img/background.svg'); */
 }
 
 img {
@@ -48,6 +52,11 @@ img {
 
 header {
   background-color: #EBE3AB;
+ position: fixed;
+  z-index: 100;
+  width: 100%;
+  top: 0;
+  padding: 30px 0;
 }
 
 .background {
@@ -71,12 +80,8 @@ header {
 
 .menu-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+  grid-template-columns: 3fr 36px 4fr; 
   align-items: center;
-}
-
-.menu {
-  padding: 30px 0;
 }
 
 section {
@@ -126,6 +131,7 @@ h2 {
   font-size: 1.5em;
   font-weight: 700;
 }
+
 
 .sobre {
   display: grid;
@@ -210,12 +216,111 @@ iframe {
   background-image: url('../img/tel.png');
 }
 
+.topo {
+  background: #6F3AAE;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 40px;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, .5);
+}
+
 footer {
   background: #EBE3AB;
   margin-top: 40px;
   padding: 40px;
   text-align: center;
 }
+
+@media only screen and (max-width: 768px) {
+
+.menu-container {
+  display: grid;
+  grid-template-columns: 1fr 36px;
+  height: 60px;
+}
+
+.mobile-btn {
+	display: block;
+	color: #6F3AAE;
+	width: 36px;
+	height: 36px;
+	border-top: 4px solid;
+	margin: 20px 20px 0 0;
+  float: right;
+  right: 40px;
+	position: relative;
+	cursor: pointer;
+	-webkit-backface-visibility: hidden;
+}
+
+.mobile-btn::after, .mobile-btn::before {
+	content: '';
+	display: block;
+	height: 4px;
+	margin-top: 6px;
+	background: currentColor;
+	position: relative;
+	transition: transform .2s ease;
+}
+
+.mobile-btn.active {
+	border-top-color: transparent;
+}
+
+.mobile-btn.active::after {
+	margin-top: 0px;
+	top: 2px;
+	transform: rotate(45deg);
+}
+
+.mobile-btn.active::before {
+	margin-top: 0px;
+	top: 6px;
+	transform: rotate(135deg);
+}
+
+.menu-nav.mobile-menu {
+  position: fixed;
+	background: #EBE3AB;
+  padding: 10px;
+  top: 120px;
+	right: 0px;
+	opacity: 0;
+	visibility: hidden;
+	transform: translate3d(60px, 0px, 0px);
+	transition: .3s;
+}
+
+.menu-nav.mobile-menu.active {
+	opacity: 1;
+	visibility: visible;
+	transform: translate3d(0px, 0px, 0px);
+}
+
+.menu-nav.mobile-menu li {
+	display: block;
+}
+}
+
+@media only screen and (max-width: 630px) {
+  .contato p {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .sobre {
+    display: block;
+  }
+
+  .sobre img {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+
 
 
 

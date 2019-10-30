@@ -1,24 +1,31 @@
 import SlideNav from './modules/slide.js';
 
-const slide = new SlideNav('.slide', '.slide-wrapper');
+ const slide = new SlideNav('.slide', '.slide-wrapper');
 slide.init();
 slide.addControl('.custom-controls');
 
-function initScrollSuave() {
-  const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]');
 
-  function scrollToSection(event) {
-    event.preventDefault();
-    const href = event.currentTarget.getAttribute('href');
-    const section = document.querySelector(href);
-    section.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  }
 
-  linksInternos.forEach((link) => {
-    link.addEventListener('click', scrollToSection);
-  });
-}
-initScrollSuave();
+$('.menu-nav a[href^="#"]').click(function (e) {
+	e.preventDefault();
+	var id = $(this).attr('href'),
+		menuHeight = $('.menu').innerHeight(),
+		targetOffset = $(id).offset().top;
+	$('html, body').animate({
+		scrollTop: targetOffset - menuHeight
+	}, 500);
+});
+
+
+$('.topo').click(function(e){
+	e.preventDefault();
+	$('html, body').animate({
+		scrollTop: 0
+	}, 500)
+});
+
+
+$('.mobile-btn').click(function(){
+	$(this).toggleClass('active');
+	$('.mobile-menu').toggleClass('active');
+});
